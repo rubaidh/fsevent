@@ -17,23 +17,23 @@ module FSEvent
     end
     
     def schedule
-      OSX::FSEventStreamScheduleWithRunLoop(@stream, OSX::CFRunLoopGetCurrent(), OSX::KCFRunLoopDefaultMode)
+      OSX::FSEventStreamScheduleWithRunLoop(@stream, OSX::CFRunLoopGetCurrent(), OSX::KCFRunLoopDefaultMode) unless @stream.nil?
     end
     
     def start
-      OSX::FSEventStreamStart(@stream)
+      OSX::FSEventStreamStart(@stream) unless @stream.nil?
     end
     
     def stop
-      OSX::FSEventStreamStop(@stream)
+      OSX::FSEventStreamStop(@stream) unless @stream.nil?
     end
     
     def invalidate
-      OSX::FSEventStreamInvalidate(@stream)
+      OSX::FSEventStreamInvalidate(@stream) unless @stream.nil?
     end
     
     def release
-      OSX::FSEventStreamRelease(@stream)
+      OSX::FSEventStreamRelease(@stream) unless @stream.nil?
       @stream = nil
     end
   end
